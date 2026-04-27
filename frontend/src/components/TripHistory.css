@@ -1,0 +1,115 @@
+.trip-history {
+  padding: var(--space-6);
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.history-item:hover {
+  background: rgba(59, 130, 246, 0.06);
+  border-color: var(--border-accent);
+}
+
+.history-route {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.route-point {
+  white-space: nowrap;
+}
+
+.route-arrow {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  flex-shrink: 0;
+}
+
+.history-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.history-date {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.history-miles {
+  font-size: var(--font-size-xs);
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.load-icon {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.history-item:hover .load-icon {
+  color: var(--accent-blue);
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.delete-btn:hover {
+  background: var(--accent-red-glow);
+  color: var(--accent-red);
+}

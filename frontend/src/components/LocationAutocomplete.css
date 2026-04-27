@@ -1,0 +1,194 @@
+/* ═══════════════════════════════════════════
+   Location Autocomplete Component
+   ═══════════════════════════════════════════ */
+
+.autocomplete-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.autocomplete-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Input wrapper with icons */
+.autocomplete-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  pointer-events: none;
+  font-size: 14px;
+  z-index: 1;
+  transition: color var(--transition-fast);
+}
+
+.autocomplete-input-wrapper:focus-within .input-search-icon {
+  color: var(--accent-blue);
+}
+
+.autocomplete-input {
+  padding-left: 36px !important;
+  padding-right: 36px !important;
+}
+
+.input-spinner {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.input-spinner .spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.input-clear {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.input-clear:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+/* Dropdown */
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+  list-style: none;
+  padding: var(--space-1);
+  max-height: 320px;
+  overflow-y: auto;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.autocomplete-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.autocomplete-option:hover,
+.autocomplete-option.active {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.autocomplete-option.active {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-blue-glow);
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.autocomplete-option.active .option-icon {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.option-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.option-main {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option-secondary {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option-type {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.autocomplete-footer {
+  padding: var(--space-2) var(--space-3);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-1);
+  cursor: default;
+}
