@@ -9,20 +9,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-eld-trip-planner-dev-key')
 
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
-
-ALLOWED_HOSTS = ['*']
-
 # Detect Vercel environment
 IS_VERCEL = os.environ.get('VERCEL', False)
 
+DEBUG = not IS_VERCEL
+
+ALLOWED_HOSTS = ['*']
+
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     # Third party
     'rest_framework',
     'corsheaders',
@@ -38,7 +36,6 @@ MIDDLEWARE = [
     # CSRF disabled for stateless API
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -88,14 +85,27 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS
-if IS_VERCEL:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'http://localhost:5173',
-        'http://127.0.0.1:5173',
-    ]
+# CORS — allow all origins for API access
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # REST Framework
 REST_FRAMEWORK = {
